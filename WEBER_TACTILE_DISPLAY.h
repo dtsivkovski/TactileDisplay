@@ -20,7 +20,7 @@
 #endif
 
 #include <Wire.h> //Wire Library to use I2C
-#include <string> 
+#include <string.h> 
 
 
 #define DRV2667_ADDR 0x59 //The DRV2667 Chip default I2C address.
@@ -79,4 +79,3 @@ class WEBER_TACTILE_DISPLAY
 };
 
 #endif
-
