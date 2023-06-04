@@ -59,7 +59,7 @@ class WEBER_TACTILE_DISPLAY
   void PLAY_T_proto(void);
   void PLAY_MAX36(void);
   void PLAY_CHAR(char c, int pos);
-  void PLAY_WORD(std::string word);
+  void PLAY_WORD(char* word);
 
   void ALLMUX_p1(void);
   void TEST_TCA0(void);
