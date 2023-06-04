@@ -723,9 +723,9 @@ void WEBER_TACTILE_DISPLAY::PLAY_CHAR(char c, int pos)
   }
 }
 
-void WEBER_TACTILE_DISPLAY::PLAY_WORD(std::string word) 
+void WEBER_TACTILE_DISPLAY::PLAY_WORD(char* word) 
 {
-  for (int i = 0; i < word.length(); i++) {
+  for (int i = 0; i < sizeof(word); i++) {
     PLAY_CHAR(word[i], 0);
     delay(5000);
   }
