@@ -1,4 +1,4 @@
-/* 
+/*
 
   WEBER_TACTILE_DISPLAY.h - Library for the Tactle Display - Senior Project
   Created by: Orlando Salas, Suny Ly, and Jacolby Griffin. April 2018
@@ -21,8 +21,21 @@ extern "C" {
 }
 
 #include "WEBER_TACTILE_DISPLAY.h"
+//#include <Arduino_FreeRTOS.h>
+//#include <semphr.h>
+
 
 byte error = 0;
+
+const int MAX_SENTENCES = 5;       // Maximum number of sentences to be stored
+const int MAX_LENGTH = 20;         // Maximum length of each sentence
+char sentences[MAX_SENTENCES][MAX_LENGTH];
+int numSentences = 0;
+/*
+SemaphoreHandle_t sem1;
+sem1 = xSemaphoreCreateBinary();
+xSemaphoreGive(sem1);
+*/
 
 byte WaveForm_MAIN[1][4] = 
 { 
@@ -698,50 +711,152 @@ void WEBER_TACTILE_DISPLAY::PLAY_CHAR(char c, int pos)
       Serial.println("D");
       break;
     case 'E':
+      PLAY_E_proto();
+      Serial.println("E");
       break;
     case 'F':
+      PLAY_F_proto();
+      Serial.println("F");
       break;
     case 'G':
+      PLAY_G_proto();
+      Serial.println("G");
       break;
     case 'H':
+      PLAY_H_proto();
+      Serial.println("H");
       break;
     case 'I':
+      PLAY_I_proto();
+      Serial.println("I");
       break;
     case 'J':
+      PLAY_J_proto();
+      Serial.println("J");
       break;
     case 'K':
+      PLAY_K_proto();
+      Serial.println("K");
       break;
     case 'M':
+      PLAY_M_proto();
+      Serial.println("M");
       break;
     case 'N':
+      PLAY_N_proto();
+      Serial.println("N");
       break;
     case 'L':
+      PLAY_L_proto();
+      Serial.println("L");
       break;
     case 'O':
+      PLAY_O_proto();
+      Serial.println("O");
       break;
     case 'P':
+      PLAY_P_proto();
+      Serial.println("P");
       break;
     case 'Q':
+      PLAY_Q_proto();
+      Serial.println("Q");
       break;
     case 'R':
+      PLAY_R_proto();
+      Serial.println("R");
       break;
     case 'S':
+      PLAY_S_proto();
+      Serial.println("S");
       break;
     case 'T':
       PLAY_T_proto();
       Serial.println("T");
       break;
     case 'U':
+      PLAY_U_proto();
+      Serial.println("U");
       break;
     case 'V':
+      PLAY_V_proto();
+      Serial.println("V");
       break;
     case 'W':
+      PLAY_W_proto();
+      Serial.println("W");
       break;
     case 'X':
+      PLAY_X_proto();
+      Serial.println("X");
       break;
     case 'Y':
+      PLAY_Y_proto();
+      Serial.println("Y");
       break;
     case 'Z':
+      PLAY_Z_proto();
+      Serial.println("Z");
+      break;
+    case '1':
+      PLAY_NUMF_proto();
+      delay(750);
+      PLAY_A_proto();
+      Serial.println("1");
+      break;
+    case '2':
+      PLAY_NUMF_proto();
+      delay(750);
+      PLAY_B_proto();
+      Serial.println("2");
+      break;
+    case '3':
+      PLAY_NUMF_proto();
+      delay(750);
+      PLAY_C_proto();
+      Serial.println("1");
+      break;
+    case '4':
+      PLAY_NUMF_proto();
+      delay(750);
+      PLAY_D_proto();
+      Serial.println("4");
+      break;
+    case '5':
+      PLAY_NUMF_proto();
+      delay(750);
+      PLAY_E_proto();
+      Serial.println("5");
+      break;
+    case '6':
+      PLAY_NUMF_proto();
+      delay(750);
+      PLAY_F_proto();
+      Serial.println("6");
+      break;
+    case '7':
+      PLAY_NUMF_proto();
+      delay(750);
+      PLAY_G_proto();
+      Serial.println("7");
+      break;
+    case '8':
+      PLAY_NUMF_proto();
+      delay(750);
+      PLAY_H_proto();
+      Serial.println("8");
+      break;
+    case '9':
+      PLAY_NUMF_proto(); // says that number is following 
+      delay(750);
+      PLAY_I_proto(); //9 is the same as I 
+      Serial.println("9");
+      break;
+    case '0':
+      PLAY_NUMF_proto();
+      delay(750);
+      PLAY_J_proto();
+      Serial.println("0");
       break;
     default:
       Serial.println("Letter not found");
@@ -751,10 +866,83 @@ void WEBER_TACTILE_DISPLAY::PLAY_CHAR(char c, int pos)
 void WEBER_TACTILE_DISPLAY::PLAY_WORD(char* word) 
 {
   int length = strlen(word);
-  for (int i = 0; i < length; i++) {
-    PLAY_CHAR(word[i], 0);
-    delay(4000);
+  for (int j = 0; j < MAX_SENTENCES; j++)
+  {
+    for (int i = 0; i < MAX_LENGTH; i++) {
+      if(sentences[j][i] != NULL)
+      {
+        PLAY_CHAR(sentences[j][i], 0);
+        delay(500);
+      }
+    }
+    delay(1000);
   }
+  delay(4000);
+}
+
+void WEBER_TACTILE_DISPLAY::READ_WORD() 
+{
+  if (Serial.available()) {
+    Serial.println("reading key");
+    char key = Serial.read();
+
+    if (key == '#') {
+      // Print stored sentences
+      Serial.println("Stored Sentences:");
+      for (int i = 0; i < numSentences; i++) {
+        Serial.println(sentences[i]);
+      }
+      Serial.println();
+    } else if (key != '\n' && numSentences < MAX_SENTENCES) {
+      // Store the sentence
+      Serial.print("Enter Sentence: ");
+      Serial.print(key);
+
+      int length = 1;
+      char sentence[MAX_LENGTH];
+      sentence[0] = key;
+
+      while (length < MAX_LENGTH) {
+        if (Serial.available()) {
+          key = Serial.read();
+          if (key != '\n') {
+            sentence[length] = key;
+            length++;
+            Serial.print(key);
+
+            if (key == '#') {
+              break;
+            }
+          }
+        }
+      }
+
+      sentence[length - 1] = '\0'; // Null-terminate the sentence
+      strncpy(sentences[numSentences], sentence, MAX_LENGTH);
+      numSentences++;
+
+      Serial.println();
+      Serial.println("Sentence stored!");
+      Serial.println();
+    }
+  }
+  else{
+          Serial.println("key read not avaible");
+    }
+}
+
+void WEBER_TACTILE_DISPLAY::PLAY_B_proto(void) {
+  ////LOAD Waveform into TCA0 port 0,1, and 2
+      TCA_0(0); 
+      LOAD_WAVE(WaveForm_MAIN, sizeof(WaveForm_MAIN)); 
+      TCA_0(1); 
+      LOAD_WAVE(WaveForm_MAIN, sizeof(WaveForm_MAIN)); 
+
+      //PLAY Stored Stored Waveform on same loaded DRVs
+      TCA_0(0); 
+      writeRegisterBytes(0x02, 0x01);
+      TCA_0(1); 
+      writeRegisterBytes(0x02, 0x01);
 }
 
 void WEBER_TACTILE_DISPLAY::PLAY_C_proto(void) {
@@ -765,7 +953,6 @@ void WEBER_TACTILE_DISPLAY::PLAY_C_proto(void) {
       //PLAY Stored Stored Waveform on same loaded DRVs
       TCA_1(0); 
       writeRegisterBytes(0x02, 0x01);
-
 }
 // -------------- PLAY&LOAD Braille Char. "D" ------------
 // Description: Load -- Setup procedure + Load waveform
@@ -1231,6 +1418,48 @@ void WEBER_TACTILE_DISPLAY::PLAY_Z_proto(void) {
       TCA_0(0); 
       writeRegisterBytes(0x02, 0x01);
       TCA_0(2); 
+      writeRegisterBytes(0x02, 0x01);
+      TCA_1(1); 
+      writeRegisterBytes(0x02, 0x01);
+      TCA_1(2); 
+      writeRegisterBytes(0x02, 0x01);
+}
+
+
+void WEBER_TACTILE_DISPLAY::PLAY_NUMF_proto(void) {
+  ////LOAD Waveform into TCA0 port 0,1, and 2
+      TCA_0(2); 
+      LOAD_WAVE(WaveForm_MAIN, sizeof(WaveForm_MAIN));
+      TCA_1(0); 
+      LOAD_WAVE(WaveForm_MAIN, sizeof(WaveForm_MAIN)); 
+      TCA_1(1); 
+      LOAD_WAVE(WaveForm_MAIN, sizeof(WaveForm_MAIN));
+      TCA_1(2); 
+      LOAD_WAVE(WaveForm_MAIN, sizeof(WaveForm_MAIN)); 
+
+      //PLAY Stored Stored Waveform on same loaded DRVs
+      TCA_0(2); 
+      writeRegisterBytes(0x02, 0x01);
+      TCA_1(0); 
+      writeRegisterBytes(0x02, 0x01);
+      TCA_1(1); 
+      writeRegisterBytes(0x02, 0x01);
+      TCA_1(2); 
+      writeRegisterBytes(0x02, 0x01);
+}
+
+
+void WEBER_TACTILE_DISPLAY::PLAY_period_proto(void) {
+  ////LOAD Waveform into TCA0 port 0,1, and 2
+      TCA_0(1); 
+      LOAD_WAVE(WaveForm_MAIN, sizeof(WaveForm_MAIN));
+      TCA_1(1); 
+      LOAD_WAVE(WaveForm_MAIN, sizeof(WaveForm_MAIN));
+      TCA_1(2); 
+      LOAD_WAVE(WaveForm_MAIN, sizeof(WaveForm_MAIN)); 
+
+      //PLAY Stored Stored Waveform on same loaded DRVs
+      TCA_0(1); 
       writeRegisterBytes(0x02, 0x01);
       TCA_1(1); 
       writeRegisterBytes(0x02, 0x01);
