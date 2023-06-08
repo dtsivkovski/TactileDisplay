@@ -19,8 +19,9 @@
  #include "WProgram.h"
 #endif
 #include<string.h>
+//#include <Arduino_FreeRTOS.h>
+//#include <semphr.h>
 #include <Wire.h> //Wire Library to use I2C
-//#include <string> 
 
 
 #define DRV2667_ADDR 0x59 //The DRV2667 Chip default I2C address.
@@ -79,8 +80,11 @@ class WEBER_TACTILE_DISPLAY
   void PLAY_X_proto(void);
   void PLAY_Y_proto(void);
   void PLAY_Z_proto(void);
+  void PLAY_NUMF_proto(void);
+  void PLAY_period_proto(void);
   void PLAY_MAX36(void);
   void PLAY_CHAR(char c, int pos);
+  void READ_WORD();
   void PLAY_WORD(char* word);
 
   void ALLMUX_p1(void);
