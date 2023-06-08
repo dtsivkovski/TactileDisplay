@@ -1,4 +1,4 @@
-/*
+/* 
 
   WEBER_TACTILE_DISPLAY.h - Library for the Tactle Display - Senior Project
   Created by: Orlando Salas, Suny Ly, and Jacolby Griffin. April 2018
