@@ -18,9 +18,9 @@
 #else
  #include "WProgram.h"
 #endif
-
+#include<string.h>
 #include <Wire.h> //Wire Library to use I2C
-#include <string.h> 
+//#include <string> 
 
 
 #define DRV2667_ADDR 0x59 //The DRV2667 Chip default I2C address.
@@ -54,9 +54,31 @@ class WEBER_TACTILE_DISPLAY
 
   void i2cSCANNER(void);
   void PLAY_A_proto(void);
-  void PLAY_D_proto(void);
+  void PLAY_B_proto(void);
   void PLAY_C_proto(void);
+  void PLAY_D_proto(void);
+  void PLAY_E_proto(void);
+  void PLAY_F_proto(void);
+  void PLAY_G_proto(void);
+  void PLAY_H_proto(void);
+  void PLAY_I_proto(void);
+  void PLAY_J_proto(void);
+  void PLAY_K_proto(void);
+  void PLAY_M_proto(void);
+  void PLAY_N_proto(void);
+  void PLAY_L_proto(void);
+  void PLAY_O_proto(void);
+  void PLAY_P_proto(void);
+  void PLAY_Q_proto(void);
+  void PLAY_R_proto(void);
+  void PLAY_S_proto(void);
   void PLAY_T_proto(void);
+  void PLAY_U_proto(void);
+  void PLAY_V_proto(void);
+  void PLAY_W_proto(void);
+  void PLAY_X_proto(void);
+  void PLAY_Y_proto(void);
+  void PLAY_Z_proto(void);
   void PLAY_MAX36(void);
   void PLAY_CHAR(char c, int pos);
   void PLAY_WORD(char* word);
@@ -79,3 +101,4 @@ class WEBER_TACTILE_DISPLAY
 };
 
 #endif
+
