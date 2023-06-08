@@ -1,3 +1,8 @@
+//#include <Arduino_FreeRTOS.h>
+//#include <semphr.h>
+
+#include <WEBER_TACTILE_DISPLAY.h>
+
 #include <Wire.h> //Include arduino Wire Library to enable to I2C
 #include "WEBER_TACTILE_DISPLAY.h"
 
@@ -45,11 +50,11 @@ Serial.println("hi");
    // timeend = micros();
    // loadtime = timeend - timestart;
     //delay(100);
-  TD.PLAY_A_proto();
+  //TD.PLAY_A_proto();
   delay(3000);
   //TD.PLAY_D_proto();
-
-  // TD.PLAY_WORD("CAT");
+  TD.READ_WORD();
+  TD.PLAY_WORD("TADC");
 /*
     timestart = micros();
     TD.PLAY_MAX36();
