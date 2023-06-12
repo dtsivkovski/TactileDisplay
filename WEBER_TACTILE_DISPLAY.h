@@ -20,7 +20,7 @@
 #endif
 #include<string.h>
 //#include <Arduino_FreeRTOS.h>
-//#include <semphr.h>
+//#include <semaphr.h>
 #include <Wire.h> //Wire Library to use I2C
 
 
@@ -82,6 +82,13 @@ class WEBER_TACTILE_DISPLAY
   void PLAY_Z_proto(void);
   void PLAY_NUMF_proto(void);
   void PLAY_period_proto(void);
+  void PLAY_comma_proto(void);
+  void PLAY_Qmark_proto(void);
+  void PLAY_Exalmark_proto(void);
+  void PLAY_colon_proto(void);
+  void PLAY_Semicolon_proto(void);
+  void PLAY_dash_proto(void);
+  void PLAY_CAPF_proto(void);
   void PLAY_MAX36(void);
   void PLAY_CHAR(char c, int pos);
   void READ_WORD();
