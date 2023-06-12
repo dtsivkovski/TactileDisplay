@@ -29,13 +29,9 @@ byte error = 0;
 
 const int MAX_SENTENCES = 5;       // Maximum number of sentences to be stored
 const int MAX_LENGTH = 20;         // Maximum length of each sentence
+int val = 0;
 char sentences[MAX_SENTENCES][MAX_LENGTH];
 int numSentences = 0;
-/*
-SemaphoreHandle_t sem1;
-sem1 = xSemaphoreCreateBinary();
-xSemaphoreGive(sem1);
-*/
 
 byte WaveForm_MAIN[1][4] = 
 { 
@@ -695,108 +691,264 @@ void WEBER_TACTILE_DISPLAY::PLAY_CHAR(char c, int pos)
 {
   switch (c) {
     case 'A':
+      PLAY_CAPF_proto();
+      delay(750);
       PLAY_A_proto();
       Serial.println("A");
       break;
+    case 'a':
+      PLAY_A_proto();
+      Serial.println("a");
+      break;
     case 'B':
+      PLAY_CAPF_proto();
+      delay(750);
       PLAY_B_proto();
       Serial.println("B");
       break;
+    case 'b':
+      PLAY_B_proto();
+      Serial.println("b");
+      break;
     case 'C':
+      PLAY_CAPF_proto();
+      delay(750);
       PLAY_C_proto();
       Serial.println("C");
       break;
+    case 'c':
+      PLAY_C_proto();
+      Serial.println("c");
+      break;
     case 'D':
+      PLAY_CAPF_proto();
+      delay(750);
       PLAY_D_proto();
       Serial.println("D");
       break;
+    case 'd':
+      PLAY_D_proto();
+      Serial.println("d");
+      break;
     case 'E':
+      PLAY_CAPF_proto();
+      delay(750);
       PLAY_E_proto();
       Serial.println("E");
       break;
+    case 'e':
+      PLAY_E_proto();
+      Serial.println("e");
+      break;
     case 'F':
+      PLAY_CAPF_proto();
+      delay(750);
       PLAY_F_proto();
       Serial.println("F");
       break;
+    case 'f':
+      PLAY_F_proto();
+      Serial.println("f");
+      break;
     case 'G':
+      PLAY_CAPF_proto();
+      delay(750);
       PLAY_G_proto();
       Serial.println("G");
       break;
+    case 'g':
+      PLAY_G_proto();
+      Serial.println("g");
+      break;
     case 'H':
+      PLAY_CAPF_proto();
+      delay(750);
       PLAY_H_proto();
       Serial.println("H");
       break;
+    case 'h':
+      PLAY_H_proto();
+      Serial.println("h");
+      break;
     case 'I':
+      PLAY_CAPF_proto();
+      delay(750);
       PLAY_I_proto();
       Serial.println("I");
       break;
+    case 'i':
+      PLAY_I_proto();
+      Serial.println("i");
+      break;
     case 'J':
+      PLAY_CAPF_proto();
+      delay(750);
       PLAY_J_proto();
       Serial.println("J");
       break;
+    case 'j':
+      PLAY_J_proto();
+      Serial.println("j");
+      break;
     case 'K':
+      PLAY_CAPF_proto();
+      delay(750);
       PLAY_K_proto();
       Serial.println("K");
       break;
+    case 'k':
+      PLAY_K_proto();
+      Serial.println("k");
+      break;
     case 'M':
+      PLAY_CAPF_proto();
+      delay(750);
       PLAY_M_proto();
       Serial.println("M");
       break;
+    case 'm':
+      PLAY_M_proto();
+      Serial.println("m");
+      break;
     case 'N':
+      PLAY_CAPF_proto();
+      delay(750);
       PLAY_N_proto();
       Serial.println("N");
       break;
+    case 'n':
+      PLAY_N_proto();
+      Serial.println("n");
+      break;
     case 'L':
+      PLAY_CAPF_proto();
+      delay(750);
       PLAY_L_proto();
       Serial.println("L");
       break;
+    case 'l':
+      PLAY_L_proto();
+      Serial.println("l");
+      break;
     case 'O':
+      PLAY_CAPF_proto();
+      delay(750);
       PLAY_O_proto();
       Serial.println("O");
       break;
+    case 'o':
+      PLAY_O_proto();
+      Serial.println("o");
+      break;
     case 'P':
+      PLAY_CAPF_proto();
+      delay(750);
       PLAY_P_proto();
       Serial.println("P");
       break;
+    case 'p':
+      PLAY_P_proto();
+      Serial.println("p");
+      break;
     case 'Q':
+      PLAY_CAPF_proto();
+      delay(750);
       PLAY_Q_proto();
       Serial.println("Q");
       break;
+    case 'q':
+      PLAY_Q_proto();
+      Serial.println("q");
+      break;
     case 'R':
+      PLAY_CAPF_proto();
+      delay(750);
       PLAY_R_proto();
       Serial.println("R");
       break;
+    case 'r':
+      PLAY_R_proto();
+      Serial.println("r");
+      break;
     case 'S':
+      PLAY_CAPF_proto();
+      delay(750);
       PLAY_S_proto();
       Serial.println("S");
       break;
+    case 's':
+      PLAY_S_proto();
+      Serial.println("s");
+      break;
     case 'T':
+      PLAY_CAPF_proto();
+      delay(750);
       PLAY_T_proto();
       Serial.println("T");
       break;
+    case 't':
+      PLAY_T_proto();
+      Serial.println("t");
+      break;
     case 'U':
+      PLAY_CAPF_proto();
+      delay(750);
       PLAY_U_proto();
       Serial.println("U");
       break;
+    case 'u':
+      PLAY_U_proto();
+      Serial.println("u");
+      break;
     case 'V':
+      PLAY_CAPF_proto();
+      delay(750);
       PLAY_V_proto();
       Serial.println("V");
       break;
+    case 'v':
+      PLAY_V_proto();
+      Serial.println("v");
+      break;
     case 'W':
+      PLAY_CAPF_proto();
+      delay(750);
       PLAY_W_proto();
       Serial.println("W");
       break;
+    case 'w':
+      PLAY_W_proto();
+      Serial.println("w");
+      break;
     case 'X':
+      PLAY_CAPF_proto();
+      delay(750);
       PLAY_X_proto();
       Serial.println("X");
       break;
+    case 'x':
+      PLAY_X_proto();
+      Serial.println("x");
+      break;
     case 'Y':
+      PLAY_CAPF_proto();
+      delay(750);
       PLAY_Y_proto();
       Serial.println("Y");
       break;
+    case 'y':
+      PLAY_Y_proto();
+      Serial.println("y");
+      break;
     case 'Z':
+      PLAY_CAPF_proto();
+      delay(750);
       PLAY_Z_proto();
       Serial.println("Z");
+      break;
+    case 'z':
+      PLAY_Z_proto();
+      Serial.println("z");
       break;
     case '1':
       PLAY_NUMF_proto();
@@ -858,26 +1010,60 @@ void WEBER_TACTILE_DISPLAY::PLAY_CHAR(char c, int pos)
       PLAY_J_proto();
       Serial.println("0");
       break;
+    case '.':
+      PLAY_period_proto();
+      Serial.println(".");
+      break;
+    case ',':
+      PLAY_comma_proto();
+      Serial.println(",");
+      break;
+    case '?':
+      PLAY_Qmark_proto();
+      Serial.println("?");
+      break;
+    case '!':
+      PLAY_Exalmark_proto();
+      Serial.println("!");
+      break;
+    case '-':
+      PLAY_dash_proto();
+      Serial.println("-");
+      break;
+    case ';':
+      PLAY_Semicolon_proto();
+      Serial.println(";");
+      break;
+    case ':':
+      PLAY_colon_proto();
+      Serial.println(":");
+      break;
+    case ' ':
+      PLAY_comma_proto();
+      Serial.println(" ");
+      break;
     default:
       Serial.println("Letter not found");
   }
 }
 
 void WEBER_TACTILE_DISPLAY::PLAY_WORD(char* word) 
-{
-  int length = strlen(word);
-  for (int j = 0; j < MAX_SENTENCES; j++)
-  {
-    for (int i = 0; i < MAX_LENGTH; i++) {
-      if(sentences[j][i] != NULL)
-      {
-        PLAY_CHAR(sentences[j][i], 0);
-        delay(500);
+{ if(val == 1){
+    int length = strlen(word);
+    for (int j = 0; j < MAX_SENTENCES; j++)
+    {
+      for (int i = 0; i < MAX_LENGTH; i++) {
+        if(sentences[j][i] != NULL)
+        {
+          PLAY_CHAR(sentences[j][i], 0);
+          delay(500);
+        }
       }
+      delay(1000);
     }
-    delay(1000);
-  }
-  delay(4000);
+    delay(4000);
+    val = 0;
+  }  
 }
 
 void WEBER_TACTILE_DISPLAY::READ_WORD() 
@@ -923,6 +1109,7 @@ void WEBER_TACTILE_DISPLAY::READ_WORD()
 
       Serial.println();
       Serial.println("Sentence stored!");
+      val = 1;
       Serial.println();
     }
   }
@@ -1464,5 +1651,107 @@ void WEBER_TACTILE_DISPLAY::PLAY_period_proto(void) {
       TCA_1(1); 
       writeRegisterBytes(0x02, 0x01);
       TCA_1(2); 
+      writeRegisterBytes(0x02, 0x01);
+}
+
+
+void WEBER_TACTILE_DISPLAY::PLAY_comma_proto(void) {
+  ////LOAD Waveform into TCA0 port 0,1, and 2
+      TCA_0(1); 
+      LOAD_WAVE(WaveForm_MAIN, sizeof(WaveForm_MAIN));
+
+      //PLAY Stored Stored Waveform on same loaded DRVs
+      TCA_0(1); 
+      writeRegisterBytes(0x02, 0x01);
+}
+
+void WEBER_TACTILE_DISPLAY::PLAY_Qmark_proto(void) {
+  ////LOAD Waveform into TCA0 port 0,1, and 2
+      TCA_0(1); 
+      LOAD_WAVE(WaveForm_MAIN, sizeof(WaveForm_MAIN));
+      TCA_0(2); 
+      LOAD_WAVE(WaveForm_MAIN, sizeof(WaveForm_MAIN));
+      TCA_1(2); 
+      LOAD_WAVE(WaveForm_MAIN, sizeof(WaveForm_MAIN)); 
+
+      //PLAY Stored Stored Waveform on same loaded DRVs
+      TCA_0(1); 
+      writeRegisterBytes(0x02, 0x01);
+      TCA_0(2); 
+      writeRegisterBytes(0x02, 0x01);
+      TCA_1(2); 
+      writeRegisterBytes(0x02, 0x01);
+}
+
+
+void WEBER_TACTILE_DISPLAY::PLAY_Exalmark_proto(void) {
+  ////LOAD Waveform into TCA0 port 0,1, and 2
+      TCA_0(1); 
+      LOAD_WAVE(WaveForm_MAIN, sizeof(WaveForm_MAIN));
+      TCA_0(2); 
+      LOAD_WAVE(WaveForm_MAIN, sizeof(WaveForm_MAIN));
+      TCA_1(1); 
+      LOAD_WAVE(WaveForm_MAIN, sizeof(WaveForm_MAIN)); 
+
+      //PLAY Stored Stored Waveform on same loaded DRVs
+      TCA_0(1); 
+      writeRegisterBytes(0x02, 0x01);
+      TCA_0(2); 
+      writeRegisterBytes(0x02, 0x01);
+      TCA_1(1); 
+      writeRegisterBytes(0x02, 0x01);
+}
+
+void WEBER_TACTILE_DISPLAY::PLAY_colon_proto(void) {
+  ////LOAD Waveform into TCA0 port 0,1, and 2
+      TCA_0(1); 
+      LOAD_WAVE(WaveForm_MAIN, sizeof(WaveForm_MAIN));
+      TCA_1(1); 
+      LOAD_WAVE(WaveForm_MAIN, sizeof(WaveForm_MAIN)); 
+
+      //PLAY Stored Stored Waveform on same loaded DRVs
+      TCA_0(1); 
+      writeRegisterBytes(0x02, 0x01);
+      TCA_1(1); 
+      writeRegisterBytes(0x02, 0x01);
+}
+
+
+void WEBER_TACTILE_DISPLAY::PLAY_Semicolon_proto(void) {
+  ////LOAD Waveform into TCA0 port 0,1, and 2
+      TCA_0(1); 
+      LOAD_WAVE(WaveForm_MAIN, sizeof(WaveForm_MAIN));
+      TCA_0(2); 
+      LOAD_WAVE(WaveForm_MAIN, sizeof(WaveForm_MAIN)); 
+
+      //PLAY Stored Stored Waveform on same loaded DRVs
+      TCA_0(1); 
+      writeRegisterBytes(0x02, 0x01);
+      TCA_0(2); 
+      writeRegisterBytes(0x02, 0x01);
+}
+
+
+void WEBER_TACTILE_DISPLAY::PLAY_dash_proto(void) {
+  ////LOAD Waveform into TCA0 port 0,1, and 2
+      TCA_0(2); 
+      LOAD_WAVE(WaveForm_MAIN, sizeof(WaveForm_MAIN));
+      TCA_1(2); 
+      LOAD_WAVE(WaveForm_MAIN, sizeof(WaveForm_MAIN)); 
+
+      //PLAY Stored Stored Waveform on same loaded DRVs
+      TCA_0(2); 
+      writeRegisterBytes(0x02, 0x01);
+      TCA_1(2); 
+      writeRegisterBytes(0x02, 0x01);
+}
+
+void WEBER_TACTILE_DISPLAY::PLAY_CAPF_proto(void) {
+  ////LOAD Waveform into TCA0 port 0,1, and 2
+      TCA_0(2); 
+      LOAD_WAVE(WaveForm_MAIN, sizeof(WaveForm_MAIN));
+
+      //PLAY Stored Stored Waveform on same loaded DRVs
+      TCA_0(2); 
       writeRegisterBytes(0x02, 0x01);
 }
