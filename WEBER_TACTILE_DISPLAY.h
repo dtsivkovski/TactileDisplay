@@ -90,7 +90,8 @@ class WEBER_TACTILE_DISPLAY
   void PLAY_dash_proto(void);
   void PLAY_CAPF_proto(void);
   void PLAY_MAX36(void);
-  void PLAY_CHAR(char c, int pos);
+  void PLAY_CHAR(char c, int p);
+  void POSITION(void);
   void READ_WORD();
   void PLAY_WORD(char* word);
 
