@@ -89,6 +89,7 @@ class WEBER_TACTILE_DISPLAY
   void PLAY_Semicolon_proto(void);
   void PLAY_dash_proto(void);
   void PLAY_CAPF_proto(void);
+  void PLAY_APO_proto(void);
   void PLAY_MAX36(void);
   void PLAY_CHAR(char c, int p);
   void POSITION(void);
