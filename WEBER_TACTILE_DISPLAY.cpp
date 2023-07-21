@@ -1180,7 +1180,7 @@ void WEBER_TACTILE_DISPLAY::PLAY_WORD(char* word)
     for (int j = 0; j < MAX_SENTENCES; j++)
     {
       for (int i = 0; i < MAX_LENGTH; i++) {
-        if(sentences[j][i] != NULL)
+        if(sentences[j][i] != NULL & sentences[j][i]!= '#')
         {
           PLAY_CHAR(sentences[j][i], 0);
           delay(500);
@@ -1231,7 +1231,7 @@ void WEBER_TACTILE_DISPLAY::READ_WORD()
         }
       }
 
-      sentence[length-1] = '\0'; // Null-terminate the sentence
+      sentence[length] = '\0'; // Null-terminate the sentence
       strncpy(sentences[numSentences], sentence, MAX_LENGTH);
       //numSentences++;
       memset(sentence, 0, sizeof(sentence));
