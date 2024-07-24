@@ -6,6 +6,30 @@
 #include <Wire.h> //Include arduino Wire Library to enable to I2C
 #include "WEBER_TACTILE_DISPLAY.h"
 
+// waveform values and positions for a 6x6 matrix, uncomment if using the waveform for piezos
+/*
+
+const int waveformValues[6][6] = {
+  {1,4,1,4,1,4},
+  {2,5,2,5,2,5},
+  {3,6,3,6,3,6},
+  {1,4,1,4,1,4},
+  {2,5,2,5,2,5},
+  {3,6,3,6,3,6}
+};
+
+const int waveformPositions[6][6] = {
+  {1,1,2,2,3,3},
+  {1,1,2,2,3,3},
+  {1,1,2,2,3,3},
+  {4,4,5,5,6,6},
+  {4,4,5,5,6,6},
+  {4,4,5,5,6,6}
+};
+
+*/
+
+
 
 WEBER_TACTILE_DISPLAY TD; //Assign object for C++ class
 
@@ -27,7 +51,7 @@ void setup()
 
 void loop() 
 {  
-Serial.println("hi");
+  Serial.println("hi");
  // delay(1000);    // Delay allows waveform to play, and gives the user time to recognize the display
  // TD.TEST_TCA0(); // Test TCA1 - Outputs waveform onto 6 ports (0-5)
  // delay(1000);    // Delay allows waveform to play, and gives the user time to recognize the display
