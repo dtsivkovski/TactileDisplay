@@ -29,6 +29,13 @@ const int waveformPositions[6][6] = {
 
 */
 
+/*
+DESIGN PLAN:
+- add basic functions and connection to scan serial port
+- connect with functions to trigger a certain piezo to activate
+- process string
+*/
+
 
 
 WEBER_TACTILE_DISPLAY TD; //Assign object for C++ class
