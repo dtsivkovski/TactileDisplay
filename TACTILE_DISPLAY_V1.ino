@@ -42,6 +42,9 @@ WEBER_TACTILE_DISPLAY TD; //Assign object for C++ class
 
 unsigned long timestart,timeend,loadtime,playtime = 0; //used to store time
 
+short nrows = 8;
+short ncols = 8;
+
 void setup() 
 {
 
@@ -56,12 +59,11 @@ void setup()
   TD.TCA_SCANNER();
 }
 
-void checkString(inputStr) {
+void checkString(String inputStr) {
   if(inputStr[0] == '~') {
     // use a ~ symbol to indicate a grid pattern has been sent
-    // process the data then using one of the functions below
-    // binaryToPixelArray(inputStr); // comment out if using waveform
-    // binaryToWaveForm(inputStr); // comment out if using pixel array
+    // process the data then using the function below
+    binaryToWaveForm(inputStr); // sends data to be processed to display all pixels on the display
   }
   else {
     try {
@@ -72,6 +74,27 @@ void checkString(inputStr) {
       return;
     }
   }
+}
+
+void binaryToWaveForm(String bString) {
+
+  // Check if the input string is the correct length (9 rows x 16 columns)
+  if (bString.length() != nrows * ncols) {
+    Serial.println("Invalid input string length.");
+    return;
+  }
+
+  for (short row = 0; row < nrows; row++) {
+    for (short col = 0; col < ncols; col++) {
+        char bval = bString[(row * ncols) + col];
+
+        if (bval == '1') {
+          //TODO: try to send to waveform using TCA_and_PORT function
+        } else {
+          // do not draw (turn off waveform at that position or do nothing)
+      }
+      }
+    }
 }
 
 void loop() 
