@@ -56,9 +56,32 @@ void setup()
   TD.TCA_SCANNER();
 }
 
+void checkString(inputStr) {
+  if(inputStr[0] == '~') {
+    // use a ~ symbol to indicate a grid pattern has been sent
+    // process the data then using one of the functions below
+    // binaryToPixelArray(inputStr); // comment out if using waveform
+    // binaryToWaveForm(inputStr); // comment out if using pixel array
+  }
+  else {
+    try {
+      TD.PLAY_CHAR(inputStr[0]);
+      delay(2000);
+    }
+    catch (&excpt e) {
+      return;
+    }
+  }
+}
+
 void loop() 
 {  
-  Serial.println("hi");
+  if (Serial.available() > 0) {
+    String inputStr = Serial.readStringUntil('\n');
+    Serial.println(inputStr);
+    checkString(inputStr);
+  }
+      // Serial.println("hi");
  // delay(1000);    // Delay allows waveform to play, and gives the user time to recognize the display
  // TD.TEST_TCA0(); // Test TCA1 - Outputs waveform onto 6 ports (0-5)
  // delay(1000);    // Delay allows waveform to play, and gives the user time to recognize the display
@@ -66,7 +89,7 @@ void loop()
 
 
 //  delay(1000);        // First delay gives user extra time to recognize the display from last repeated (main) loop
-  TD.PLAY_A_proto(); // Play Braille Char. "A"- Outputs waveform onto designated Tactile Display ports
+  // TD.PLAY_A_proto(); // Play Braille Char. "A"- Outputs waveform onto designated Tactile Display ports
 
     //timestart = micros();
    // TD.LOAD_MAX36();
@@ -76,7 +99,7 @@ void loop()
    // loadtime = timeend - timestart;
     //delay(100);
   //TD.TEST_TCA0();
-  delay(3000);
+  // delay(3000);
   
    //TD.PLAY_C_proto();
   //TD.READ_WORD();
