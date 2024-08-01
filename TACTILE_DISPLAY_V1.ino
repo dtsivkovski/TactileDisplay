@@ -90,6 +90,7 @@ void binaryToWaveForm(String bString) {
 
         if (bval == '1') {
           //TODO: try to send to waveform using TCA_and_PORT function
+          
         } else {
           // do not draw (turn off waveform at that position or do nothing)
       }
