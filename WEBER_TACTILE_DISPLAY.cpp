@@ -43,7 +43,7 @@ byte WaveForm_MAIN[1][4] =
     // Duration     --  Cycles 0-255
     // Envelope     --  (Ramp up + down)
     // Max 60 waves per array !!
-   {255, 10, 100, 0}  // {AMP., FREQ., DUR., ENV.} = { [A] , [F] , [D] , [E - "Optimum at 0"] }  
+   {200, 10, 100, 0}  // {AMP., FREQ., DUR., ENV.} = { [A] , [F] , [D] , [E - "Optimum at 0"] }  
                           
 };
 

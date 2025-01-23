@@ -1,8 +1,6 @@
 //#include <Arduino_FreeRTOS.h>
 //#include <semphr.h>
 
-#include <WEBER_TACTILE_DISPLAY.h>
-
 #include <Wire.h> //Include arduino Wire Library to enable to I2C
 #include "WEBER_TACTILE_DISPLAY.h"
 
